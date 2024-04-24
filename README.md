@@ -1,36 +1,36 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+## Introduction
+This is a Decentralized application of the supply chain implemented by Solidity, Hardhat, and Next.js.
+It uses blockchain technology for traceability, where the sender can record the condition of the product on the blockchain, and the delivery status can be monitored through the app.
 
 ## Getting Started
 
-First, run the development server:
+First, set up the environment
 
 ```bash
+git clone git@github.com:Yasu46/supply-chain-tracking-dapp.git
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) with your browser.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+In another terminal, run this command to start a local Ethereum network
+```bash
+npx hardhat node
+```
+This will create a local Ethereum network for development purposes and generate accounts for development and testing.
+Once you run this, you can get 20 accounts.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+Open one another terminal, then run this command to deploy your smart contract on the local Ethereum network.
+```bash
+npx hardhat run --network localhost scripts/deploy.ts
+```
+You can see the address of the contract in your terminal, Copy and paste it to ContractAddress in TrackingContext.ts
 
-## Learn More
+## How to use this dapp
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+1. Connect account to MetaMask
+2. Add tracking information to store shipment data in a blockchain
+3. Get tracking data by Get Shipment
+4. Start tracking to change tracking status by contract
+5. After complete delivery, do comp shipment to change tracking status by contract
