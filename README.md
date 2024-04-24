@@ -8,6 +8,7 @@ First, set up the environment
 
 ```bash
 git clone git@github.com:Yasu46/supply-chain-tracking-dapp.git
+cd supply-chain-tracking-dapp
 npm install
 npm run dev
 ```
